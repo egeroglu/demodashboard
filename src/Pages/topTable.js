@@ -129,7 +129,7 @@ class TopTable extends Component {
             }
           } else {
             Cookies.remove('token');
-            window.location.href = 'http://localhost:3000/';
+            window.location.href = 'https://demodashboard-aha.pages.dev/'
             break;
           }
         }

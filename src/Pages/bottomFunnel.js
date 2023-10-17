@@ -227,7 +227,7 @@ class BottomFunnel extends Component {
       responses.forEach((response, index) => {
         if (response.status === 410) {
           Cookies.remove('token');
-          window.location.href = 'http://localhost:3000/';
+          window.location.href = 'https://demodashboard-aha.pages.dev/'
         } else {
           const data = response.data ? response.data : false;
           chartListClone[index].data = data.result.map(({ week_start_date, value, source }, index) => {
