@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom';
 
 /* UI */
 import { Container, CssBaseline, ThemeProvider, Grid, Box, Button, TextField } from "@mui/material";
@@ -24,6 +25,7 @@ class Login extends Component {
   };
 
   handleLogin = () => {
+    const history = useHistory();
 
     const { email, token } = this.state;
     fetch("http://dydx.hopto.org:3013/user/login", {
@@ -42,7 +44,7 @@ class Login extends Component {
           let result = await response.json();
 
           Cookies.set('token', result.result.token)
-          window.location.href = 'http://localhost:3000/topFunnel'
+          history.push('/topFunnel');
         } else {
           alert('Wrong Credentials')
         }
