@@ -199,7 +199,7 @@ class BottomFunnel extends Component {
   async componentDidMount() {
     let jwtToken = Cookies.get('token');
     if (!jwtToken) {
-      window.location.href = 'http://localhost:3000/'
+      window.location.href = 'https://demodashboard-aha.pages.dev/'
     }
     console.log(Cookies)
     
