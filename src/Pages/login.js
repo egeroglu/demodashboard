@@ -42,7 +42,7 @@ class Login extends Component {
           let result = await response.json();
 
           Cookies.set('token', result.result.token)
-          window.location.href = 'http://localhost:3000/midFunnel'
+          window.location.href = 'http://localhost:3000/topFunnel'
         } else {
           alert('Wrong Credentials')
         }
