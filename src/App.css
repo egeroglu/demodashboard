@@ -1,0 +1,17 @@
+main#content{
+	padding-top:80px;
+	padding-bottom:24px;
+}
+
+.nav a {
+    text-decoration: none;
+    background-color: yellow;
+    color: #1efe00;
+}
+.homebutton {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;        
+}
