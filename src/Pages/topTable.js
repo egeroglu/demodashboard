@@ -172,7 +172,7 @@ class TopTable extends Component {
                 <Grid item xs={12}>
                   <PageHeader
                     theme={theme}
-                    pageTitle="Dummy data for table design choice"
+                    pageTitle="Social Media Data Table (Top of Funnel)"
                   />
                 </Grid>
 

@@ -172,7 +172,7 @@ class BottomTable extends Component {
                 <Grid item xs={12}>
                   <PageHeader
                     theme={theme}
-                    pageTitle="Dummy data for table design choice"
+                    pageTitle="Market Data Table (Bottom of Funnel)"
                   />
                 </Grid>
 
