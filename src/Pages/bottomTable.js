@@ -102,6 +102,9 @@ class BottomTable extends Component {
     
   async componentDidMount() {
     let jwtToken = Cookies.get('token');
+    if (!jwtToken) {
+      window.location.href = 'https://demodashboard-aha.pages.dev/'
+    }
 
     let dataTableClone = this.state.dataTable;
 
