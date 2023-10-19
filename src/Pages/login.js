@@ -24,7 +24,7 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-
+    console.log("handle");
     const { email, token } = this.state;
     fetch("http://dydx.hopto.org:3013/user/login", {
       method: 'POST',
@@ -38,15 +38,18 @@ class Login extends Component {
       })
     })
       .then(async (response) => {
+        console.log("response");
         if (response.status === 200) {
           let result = await response.json();
-
           Cookies.set('token', result.result.token)
-          window.location.href = 'https://demodashboard-aha.pages.dev/topFunnel'
+          window.location.href = 'http://localhost:3000/topFunnel'
         } else {
           alert('Wrong Credentials')
         }
-      })
+      }).catch((error) => {
+        console.error("Hata oluştu: ", error);
+      });
+      
   };
 
   render() {
