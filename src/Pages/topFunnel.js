@@ -206,11 +206,11 @@ class TopFunnel extends Component {
       try {
         
         const axiosRequests = [
-          axios.get('http://dydx.hopto.org:3013/stats/youtube', axiosConfig),
-          axios.get('http://dydx.hopto.org:3013/stats/website', axiosConfig),
-          axios.get('http://dydx.hopto.org:3013/stats/twitter', axiosConfig),
-          axios.get('http://dydx.hopto.org:3013/stats/telegram', axiosConfig),
-          axios.get('http://dydx.hopto.org:3013/stats/discord', axiosConfig)
+          axios.get('https://dydxfoundation-dashboard.com/api/stats/youtube', axiosConfig),
+          axios.get('https://dydxfoundation-dashboard.com/api/stats/website', axiosConfig),
+          axios.get('https://dydxfoundation-dashboard.com/api/stats/twitter', axiosConfig),
+          axios.get('https://dydxfoundation-dashboard.com/api/stats/telegram', axiosConfig),
+          axios.get('https://dydxfoundation-dashboard.com/api/stats/discord', axiosConfig)
         ];
     
         const responses = await Promise.all(axiosRequests);

@@ -116,7 +116,7 @@ class BottomTable extends Component {
     try {
       
       const axiosRequests = [
-        axios.get('http://dydx.hopto.org:3013/tables/bottomoffunnel', axiosConfig),
+        axios.get('https://dydxfoundation-dashboard.com/api/tables/bottomoffunnel', axiosConfig),
       ];
   
       const responses = await Promise.all(axiosRequests);    

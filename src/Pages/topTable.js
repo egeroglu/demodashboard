@@ -116,7 +116,7 @@ class TopTable extends Component {
     try {
       
       const axiosRequests = [
-        axios.get('http://dydx.hopto.org:3013/tables/topoffunnel', axiosConfig),
+        axios.get('https://dydxfoundation-dashboard.com/api/tables/topoffunnel', axiosConfig),
       ];
   
       const responses = await Promise.all(axiosRequests);    

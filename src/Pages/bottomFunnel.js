@@ -208,15 +208,15 @@ class BottomFunnel extends Component {
       }
     };
     const endpoints = [
-      'http://dydx.hopto.org:3013/stats/activeuser',
-      'http://dydx.hopto.org:3013/stats/activeuser',
-      'http://dydx.hopto.org:3013/stats/linkedin',
-      'http://dydx.hopto.org:3013/stats/token-holders',
-      'http://dydx.hopto.org:3013/stats/token-holders-50',
-      'http://dydx.hopto.org:3013/stats/hedgie-holders',
-      'http://dydx.hopto.org:3013/stats/trading-volume',
-      'http://dydx.hopto.org:3013/stats/platform-volume',
-      'http://dydx.hopto.org:3013/stats/trading-fees',
+      'https://dydxfoundation-dashboard.com/api/stats/activeuser',
+      'https://dydxfoundation-dashboard.com/api/stats/activeuser',
+      'https://dydxfoundation-dashboard.com/api/stats/linkedin',
+      'https://dydxfoundation-dashboard.com/api/stats/token-holders',
+      'https://dydxfoundation-dashboard.com/api/stats/token-holders-50',
+      'https://dydxfoundation-dashboard.com/api/stats/hedgie-holders',
+      'https://dydxfoundation-dashboard.com/api/stats/trading-volume',
+      'https://dydxfoundation-dashboard.com/api/stats/platform-volume',
+      'https://dydxfoundation-dashboard.com/api/stats/trading-fees',
     ];
     
     try {

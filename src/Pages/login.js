@@ -26,12 +26,12 @@ class Login extends Component {
   handleLogin = () => {
     console.log("handle");
     const { email, token } = this.state;
-    fetch("http://dydx.hopto.org:3013/user/login", {
+    fetch("https://dydxfoundation-dashboard.com/api/user/login", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+        'Content-Type': 'application/json',
+              },
       body: JSON.stringify({
         email: email,
         token: token
@@ -42,7 +42,7 @@ class Login extends Component {
         if (response.status === 200) {
           let result = await response.json();
           Cookies.set('token', result.result.token)
-          window.location.href = 'http://localhost:3000/topFunnel'
+          window.location.href = 'https://dydxfoundation-dashboard.com/topFunnel'
         } else {
           alert('Wrong Credentials')
         }
