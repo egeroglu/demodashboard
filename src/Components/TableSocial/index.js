@@ -97,17 +97,17 @@ const columns = [
 ]
 
 const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
-	let coloumnArray = [];
+	let columnArray = [];
 	const dataRows = dataTable.slice(1);
 
 	if (Array.isArray(dataTable) && dataTable.length > 0) {
-	  coloumnArray = Object.values(dataTable[0]);
+	  columnArray = Object.values(dataTable[0]);
 	} else {
 	  console.error("dataTable is not a valid array");
 	  return null;
 	}
 	
-	const columnsNew = coloumnArray.slice(1).map((date, index) => ({
+	const columnsNew = columnArray.slice(1).map((date, index) => ({
 	  field: `col${index + 1}`,
 	  headerName: date,
 	  width: 209,
