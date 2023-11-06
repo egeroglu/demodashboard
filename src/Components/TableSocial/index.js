@@ -98,7 +98,7 @@ const columns = [
 
 const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 	let coloumnArray = [];
-	const dataRows = dataTable.slice(1); // İlk elemanı hariç diğer altı elemanı al
+	const dataRows = dataTable.slice(1);
 
 	if (Array.isArray(dataTable) && dataTable.length > 0) {
 	  coloumnArray = Object.values(dataTable[0]);
@@ -107,11 +107,11 @@ const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 	  return null;
 	}
 	
-	const columnsNew = coloumnArray.map((date, index) => ({
+	const columnsNew = coloumnArray.slice(1).map((date, index) => ({
 	  field: `col${index + 1}`,
 	  headerName: date,
-	  width: 209, // İstediğiniz genişliği ayarlayabilirsiniz
-	  type: index === 0 ? 'string' : 'number', // İlk sütunu "string" olarak ayarlar, diğer sütunlar "number"
+	  width: 209,
+	  type: index === 0 ? 'string' : 'number',
 	  headerAlign: 'right',
 	  align: 'right'
 	}));
