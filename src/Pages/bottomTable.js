@@ -193,7 +193,7 @@ class BottomTable extends Component {
                 <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={629}
+                    tableHeight={1460}
                     title= "Bottom of Funnel Table"
                     dataTable={dataTable}
                   />

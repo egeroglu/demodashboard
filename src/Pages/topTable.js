@@ -193,7 +193,7 @@ class TopTable extends Component {
                 <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={629}
+                    tableHeight={1201}
                     title= "Top of Funnel Table"
                     dataTable={dataTable}
                   />

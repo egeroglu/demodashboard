@@ -103,7 +103,6 @@ const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 	if (Array.isArray(dataTable) && dataTable.length > 0) {
 	  columnArray = Object.values(dataTable[0]);
 	} else {
-	  console.error("dataTable is not a valid array");
 	  return null;
 	}
 	
