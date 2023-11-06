@@ -22,7 +22,7 @@ const Widget1 = ({title, data}) => {
 	return (
 		<Card
 			sx={{
-				height: 182,
+				height: 140,
 				position: 'relative'
 			}}
 		>

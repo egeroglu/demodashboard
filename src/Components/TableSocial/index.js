@@ -186,8 +186,9 @@ const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 						loading={ false }
 						columns={ columnsNew }
 						rows={ dataRows }
+						rowsPerPageOptions={[5]}
 						// density="compact"
-						hideFooterSelectedRowCount
+						hideFooter
 						// checkboxSelection
 						// autoHeight
 						// disableColumnMenu

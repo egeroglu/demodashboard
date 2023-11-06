@@ -303,7 +303,7 @@ class QuestAndPoap extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={420}
+                    tableHeight={316}
                     title= "Quest and POAP's Table"
                     dataTable={dataTable}
                   />
