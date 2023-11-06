@@ -103,7 +103,7 @@ class BottomTable extends Component {
   async componentDidMount() {
     let jwtToken = Cookies.get('token');
     if (!jwtToken) {
-      window.location.href = 'https://demodashboard-aha.pages.dev/'
+      window.location.href = 'http://localhost:3000'
     }
 
     let dataTableClone = this.state.dataTable;
@@ -129,7 +129,7 @@ class BottomTable extends Component {
             }
           } else {
             Cookies.remove('token');
-            window.location.href = 'https://demodashboard-aha.pages.dev/'
+            window.location.href = 'http://localhost:3000'
             break;
           }
         }
@@ -193,6 +193,8 @@ class BottomTable extends Component {
                 <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
+                    tableHeight={629}
+                    title= "Bottom of Funnel Table"
                     dataTable={dataTable}
                   />
                 </Grid>

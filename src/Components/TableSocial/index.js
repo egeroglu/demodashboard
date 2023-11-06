@@ -96,7 +96,25 @@ const columns = [
 	},
 ]
 
-const TableSocial = ({ theme, dataTable }) => {
+const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
+	let coloumnArray = [];
+	const dataRows = dataTable.slice(1); // İlk elemanı hariç diğer altı elemanı al
+
+	if (Array.isArray(dataTable) && dataTable.length > 0) {
+	  coloumnArray = Object.values(dataTable[0]);
+	} else {
+	  console.error("dataTable is not a valid array");
+	  return null;
+	}
+	
+	const columnsNew = coloumnArray.map((date, index) => ({
+	  field: `col${index + 1}`,
+	  headerName: date,
+	  width: 209, // İstediğiniz genişliği ayarlayabilirsiniz
+	  type: index === 0 ? 'string' : 'number', // İlk sütunu "string" olarak ayarlar, diğer sütunlar "number"
+	  headerAlign: 'right',
+	  align: 'right'
+	}));
 
 	const searchInputRef = useRef()
 
@@ -122,7 +140,7 @@ const TableSocial = ({ theme, dataTable }) => {
 						pr: { xs: 1, sm: 1 },
 					}}
 				>
-					<HeaderTitle>Option 1</HeaderTitle>
+					<HeaderTitle>{title}</HeaderTitle>
 					<ToggleButtonGroup
 						value={ dateRange }
 						onChange={ handleChange }
@@ -163,11 +181,11 @@ const TableSocial = ({ theme, dataTable }) => {
 						</IconButton>
 					</Tooltip>
 				</ToolbarStyled>
-				<div style={{ width: '100%', height: 629}}>
+				<div style={{ width: '100%', height: tableHeight}}>
 					<DataGridStyled
 						loading={ false }
-						columns={ columns }
-						rows={ dataTable }
+						columns={ columnsNew }
+						rows={ dataRows }
 						// density="compact"
 						hideFooterSelectedRowCount
 						// checkboxSelection

@@ -5,6 +5,7 @@ import TopFunnel from "./Pages/topFunnel";
 import TopTable from "./Pages/topTable";
 import BottomFunnel from "./Pages/bottomFunnel";
 import BottomTable from "./Pages/bottomTable";
+import QuestAndPoap from "./Pages/questAndPoap";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/topTable" element={<TopTable />} />
             <Route path="/bottomFunnel" element={<BottomFunnel />} />
             <Route path="/bottomTable" element={<BottomTable />} />
+            <Route path="/questAndPoap" element={<QuestAndPoap />} />
           </Routes>
       </div>
     </>

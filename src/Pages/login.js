@@ -38,11 +38,10 @@ class Login extends Component {
       })
     })
       .then(async (response) => {
-        console.log("response");
         if (response.status === 200) {
           let result = await response.json();
           Cookies.set('token', result.result.token)
-          window.location.href = 'https://dydxfoundation-dashboard.com/topFunnel'
+          window.location.href = 'http://localhost:3000/topFunnel'
         } else {
           alert('Wrong Credentials')
         }

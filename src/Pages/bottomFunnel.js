@@ -199,7 +199,7 @@ class BottomFunnel extends Component {
   async componentDidMount() {
     let jwtToken = Cookies.get('token');
     if (!jwtToken) {
-      window.location.href = 'https://demodashboard-aha.pages.dev/'
+      window.location.href = 'http://localhost:3000'
     }
     let chartListClone = this.state.chartList;
     const axiosConfig = {
@@ -225,7 +225,7 @@ class BottomFunnel extends Component {
       responses.forEach((response, index) => {
         if (response.status === 410) {
           Cookies.remove('token');
-          window.location.href = 'https://demodashboard-aha.pages.dev/'
+          window.location.href = 'http://localhost:3000'
         } else {
           const data = response.data ? response.data : false;
           chartListClone[index].data = data.result.map(({ week_start_date, value, source }, index) => {

@@ -23,6 +23,12 @@ const menuItems = [
 		color	: 'rgba(61, 61, 87, 0.3)',
 		link		: '/bottomTable'
 	},
+	{
+		id		: 5,
+		title	: 'Quest & POAPs',
+		color	: 'rgba(61, 61, 87, 0.3)',
+		link		: '/questAndPoap'
+	},
 	/*
 	{
 		parent_id	: 1,
