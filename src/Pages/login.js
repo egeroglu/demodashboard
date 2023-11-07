@@ -41,7 +41,7 @@ class Login extends Component {
         if (response.status === 200) {
           let result = await response.json();
           Cookies.set('token', result.result.token)
-          window.location.href = 'http://localhost:3000/topFunnel'
+          window.location.href = 'https://dydxfoundation-dashboard.com/topFunnel'
         } else {
           alert('Wrong Credentials')
         }

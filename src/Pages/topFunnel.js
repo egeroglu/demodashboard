@@ -193,7 +193,7 @@ class TopFunnel extends Component {
     async componentDidMount() {
       let jwtToken = Cookies.get('token');
       if (!jwtToken) {
-        window.location.href = 'http://localhost:3000'
+        window.location.href = 'https://dydxfoundation-dashboard.com/'
       }
       
       let chartListClone = this.state.chartList;
@@ -259,7 +259,7 @@ class TopFunnel extends Component {
             }
           } else {
             Cookies.remove('token');
-            window.location.href = 'http://localhost:3000'
+            window.location.href = 'https://dydxfoundation-dashboard.com/'
             break;
           }
         }

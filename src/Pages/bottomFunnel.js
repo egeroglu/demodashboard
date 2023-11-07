@@ -198,7 +198,7 @@ class BottomFunnel extends Component {
   async componentDidMount() {
     let jwtToken = Cookies.get('token');
     if (!jwtToken) {
-      window.location.href = 'http://localhost:3000'
+      window.location.href = 'https://dydxfoundation-dashboard.com/'
     }
     let chartListClone = this.state.chartList;
     const axiosConfig = {
@@ -224,7 +224,7 @@ class BottomFunnel extends Component {
       responses.forEach((response, index) => {
         if (response.status === 410) {
           Cookies.remove('token');
-          window.location.href = 'http://localhost:3000'
+          window.location.href = 'https://dydxfoundation-dashboard.com/'
         } else {
           const data = response.data ? response.data : false;
           chartListClone[index].data = data.result.map(({ week_start_date, value, source }, index) => {
