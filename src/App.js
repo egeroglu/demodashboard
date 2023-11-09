@@ -1,12 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Pages/login";
-import TopFunnel from "./Pages/topFunnel";
-import TopTable from "./Pages/topTable";
-import BottomFunnel from "./Pages/bottomFunnel";
-import BottomTable from "./Pages/bottomTable";
 import QuestAndPoap from "./Pages/questAndPoap";
 import NotFound from "./Pages/NotFound";
+import MarketData from "./Pages/marketData";
+import SocialMedia from "./Pages/socialMedia";
+import GoogleAnalitics from "./Pages/googleAnalitics";
 
 function App() {
   return (
@@ -14,11 +13,10 @@ function App() {
       <div className="App">
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/topFunnel" element={<TopFunnel />} />
-            <Route path="/topTable" element={<TopTable />} />
-            <Route path="/bottomFunnel" element={<BottomFunnel />} />
-            <Route path="/bottomTable" element={<BottomTable />} />
+            <Route path="/socialMedia" element={<SocialMedia />} />
+            <Route path="/marketData" element={<MarketData />} />
             <Route path="/questAndPoap" element={<QuestAndPoap />} />
+            <Route path="/googleAnalitics" element={<GoogleAnalitics />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
       </div>

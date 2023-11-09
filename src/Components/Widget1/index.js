@@ -36,7 +36,7 @@ const Widget1 = ({title, data}) => {
 			<Stack direction="row" alignItems="center" justifyContent="space-evenly" sx={{ mt: '16px' }}>
 				<Box sx={{ textAlign: 'center' }}>
                     <Stack direction="row" alignItems="center" justifyContent="center">
-						<Typography sx={{ fontSize: '14px' }}>Change</Typography>
+						<Typography sx={{ fontSize: '14px' }}>Weekly Change</Typography>
 					</Stack>
                         {change >= 0 ? (
                             <Stack direction="row" alignItems="center" justifyContent="center" sx={{ color: '#02C076' }}>

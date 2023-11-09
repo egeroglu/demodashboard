@@ -1,33 +1,27 @@
 const menuItems = [
 	{
 		id		: 1,
-		title	: 'Social Media Data (Top of Funnel) Charts',
+		title	: 'Social Media Data Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/topFunnel'
+		link		: '/socialMedia'
 	},
 	{
 		id		: 2,
-		title	: 'Social Media Data (Top of Funnel) Table',
+		title	: 'Market Data Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/topTable'
+		link		: '/marketData'
 	},
 	{
 		id		: 3,
-		title	: 'Market Data (Bottom of Funnel) Chart',
+		title	: 'Quest & POAPs Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/bottomFunnel'
+		link		: '/questAndPoap'
 	},
 	{
 		id		: 4,
-		title	: 'Market Data (Bottom of Funnel) Table',
+		title	: 'Google Analitics Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/bottomTable'
-	},
-	{
-		id		: 5,
-		title	: 'Quest & POAPs',
-		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/questAndPoap'
+		link		: '/googleAnalitics'
 	},
 	/*
 	{
