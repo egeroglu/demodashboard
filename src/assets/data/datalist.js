@@ -13,15 +13,21 @@ const menuItems = [
 	},
 	{
 		id		: 3,
-		title	: 'Quest & POAPs Dashboard',
+		title	: 'Discourse Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/questAndPoap'
+		link		: '/discourse'
 	},
 	{
 		id		: 4,
 		title	: 'Google Analitics Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
 		link		: '/googleAnalitics'
+	},
+	{
+		id		: 5,
+		title	: 'Quest & POAPs Dashboard',
+		color	: 'rgba(61, 61, 87, 0.3)',
+		link		: '/questAndPoap'
 	},
 	/*
 	{
