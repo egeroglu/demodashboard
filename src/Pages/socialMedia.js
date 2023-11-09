@@ -231,7 +231,6 @@ class SocialMedia extends Component {
   
       for (let i = 0; i < 5; i++) {
         const response = responses[i];
-        console.log(response)
 
         if (response.status === 410) {
           Cookies.remove('token');

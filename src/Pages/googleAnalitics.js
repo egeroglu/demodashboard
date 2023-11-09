@@ -266,8 +266,6 @@ class GoogleAnalitics extends Component {
       console.log(error);
     }
   }
-  
-  
 
   render() {
     const {
