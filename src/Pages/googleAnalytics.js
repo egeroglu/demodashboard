@@ -28,7 +28,7 @@ import Widget1 from "../Components/Widget1";
 import TableSocial from "../Components/TableSocial";
 
 
-class GoogleAnalitics extends Component {
+class GoogleAnalytics extends Component {
   state = {
     theme: localStorage.getItem("theme") || "dark",
     sidebarIsOpen: false,
@@ -299,7 +299,7 @@ class GoogleAnalitics extends Component {
               <Grid item xs={12}>
                 <PageHeader
                   theme={theme}
-                  pageTitle="Google Analitics Dashboard (STILL DEVELOPING THOSE ARE DUMMY DATA)"
+                  pageTitle="Google Analytics Dashboard (...DUMMY DATA... WAITING FOR API)"
                 />
               </Grid>
 
@@ -349,7 +349,7 @@ class GoogleAnalitics extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={1460}
+                    tableHeight={1670}
                     title= "Google Analitics Table"
                     dataTable={dataTable}
                   />
@@ -365,4 +365,4 @@ class GoogleAnalitics extends Component {
   }
 }
 
-export default GoogleAnalitics;
+export default GoogleAnalytics;

@@ -5,7 +5,7 @@ import QuestAndPoap from "./Pages/questAndPoap";
 import NotFound from "./Pages/NotFound";
 import MarketData from "./Pages/marketData";
 import SocialMedia from "./Pages/socialMedia";
-import GoogleAnalitics from "./Pages/googleAnalitics";
+import GoogleAnalytics from "./Pages/googleAnalytics";
 import Discourse from "./Pages/discourse";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
             <Route path="/marketData" element={<MarketData />} />
             <Route path="/discourse" element={<Discourse />} />
             <Route path="/questAndPoap" element={<QuestAndPoap />} />
-            <Route path="/googleAnalitics" element={<GoogleAnalitics />} />
+            <Route path="/googleAnalytics" element={<GoogleAnalytics />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
       </div>

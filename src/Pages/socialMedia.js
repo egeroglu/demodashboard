@@ -366,7 +366,7 @@ class SocialMedia extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={1200}
+                    tableHeight={1460}
                     title= "Social Media Data Table"
                     dataTable={dataTable}
                   />

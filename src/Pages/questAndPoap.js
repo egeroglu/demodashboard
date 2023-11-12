@@ -191,7 +191,7 @@ class QuestAndPoap extends Component {
       'https://dydxfoundation-dashboard.com/api/stats/poap-events',
       'https://dydxfoundation-dashboard.com/api/stats/total-poaps',
       'https://dydxfoundation-dashboard.com/api/stats/poap-holders',
-      'https://dydxfoundation-dashboard.com/api/tables/middleoffunnel',
+      'https://dydxfoundation-dashboard.com/api/tables/questpoap',
     ];
     
     try {
@@ -259,7 +259,7 @@ class QuestAndPoap extends Component {
               <Grid item xs={12}>
                 <PageHeader
                   theme={theme}
-                  pageTitle="Quest & POAP's Dashboard"
+                  pageTitle="Quest & POAP's Dashboard (WAITING FOR QUEST and POAP API FOR ...NEW DATA...)"
                 />
               </Grid>
 
@@ -302,7 +302,7 @@ class QuestAndPoap extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={316}
+                    tableHeight={369}
                     title= "Quest and POAP's Table"
                     dataTable={dataTable}
                   />

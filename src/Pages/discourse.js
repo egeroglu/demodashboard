@@ -20,10 +20,7 @@ import SectionHeader from "../Components/SectionHeader";
 /* Charts */
 import Charts from "../Components/Charts";
 import WebsiteViewChart from "../Components/BottomCharts/WebsiteViewChart";
-import WebsiteViewCountryChart from "../Components/BottomCharts/WebsiteViewCountryChart";
 import ChartLineAndBar from "../Components/ChartLineAndBar";
-import YoutubeViewChart from "../Components/BottomCharts/YoutubeViewChart";
-import ActiveUserCountryChart from "../Components/BottomCharts/ActiveUserCountryChart";
 import Widget1 from "../Components/Widget1";
 import TableSocial from "../Components/TableSocial";
 
@@ -53,9 +50,9 @@ class Discourse extends Component {
     changePercentage: "",
     allTimeLow: "",
     lastTime: "",
-    activeUserWidgetData:"",
-    tokenHolderWidgetData:"",
-    platformVolumeWidgetData:"",
+    discourseViewsWidget:"",
+    discourseMemberWidgetData:"",
+    discourseContributorsWidgetData:"",
     dataTable:"",
     activeCharts: [
         "chart-1",
@@ -64,26 +61,23 @@ class Discourse extends Component {
         "chart-4",
         "chart-5",
         "chart-6",
-        "chart-7",
-        "chart-8",
-        "chart-9"
       ],
       chartList: [
         {
           id: "chart-1",
           data: [],
-          component: WebsiteViewChart,
+          component: ChartLineAndBar,
           props: {},
-          title: "Data",
+          title: "Discourse Views",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
-        }, {
+        },{
           id: "chart-2",
           data: [],
-          component: ActiveUserCountryChart,
+          component: WebsiteViewChart,
           props: {},
-          title: "Data",
+          title: "Discourse Views",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
@@ -92,7 +86,7 @@ class Discourse extends Component {
           data: [],
           component: ChartLineAndBar,
           props: {},
-          title: "Data",
+          title: "Discourse Members",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
@@ -101,7 +95,7 @@ class Discourse extends Component {
           data: [],
           component: ChartLineAndBar,
           props: {},
-          title: "Data",
+          title: "Discourse Contributors",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
@@ -110,7 +104,7 @@ class Discourse extends Component {
           data: [],
           component: ChartLineAndBar,
           props: {},
-          title: "Data",
+          title: "Discourse Posts",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
@@ -119,38 +113,11 @@ class Discourse extends Component {
           data: [],
           component: ChartLineAndBar,
           props: {},
-          title: "Data",
+          title: "Discourse Topics",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
-        }, {
-          id: "chart-7",
-          data: [],
-          component: YoutubeViewChart,
-          props: {},
-          title: "Chart",
-          description:
-            "View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-8",
-          data: [],
-          component: WebsiteViewCountryChart,
-          props: {},
-          title: "Chart",
-          description:
-            "Subscriber Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-9",
-          data: [],
-          component: WebsiteViewCountryChart,
-          props: {},
-          title: "Chart",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        },
+        }
       ],
     watchListIsOpen: false,
   };
@@ -209,9 +176,9 @@ class Discourse extends Component {
         window.location.href = 'https://dydxfoundation-dashboard.com/'
     }
     let chartListClone = this.state.chartList;
-    let activeUserWidgetDataClone = this.state.questWidgetData;
-    let tokenHolderWidgetDataClone = this.state.tokenHolderWidgetData
-    let platformVolumeWidgetDataClone = this.state.platformVolumeWidgetData;
+    let discourseViewsClone = this.state.questWidgetData;
+    let discourseMemberWidgetDataClone = this.state.discourseMemberWidgetData
+    let discourseContributorsWidgetDataClone = this.state.discourseContributorsWidgetData;
 
     let dataTableClone = this.state.dataTable;
 
@@ -221,22 +188,19 @@ class Discourse extends Component {
       }
     };
     const endpoints = [
-        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
-        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
-        'https://dydxfoundation-dashboard.com/api/stats/linkedin',
-        'https://dydxfoundation-dashboard.com/api/stats/token-holders',
-        'https://dydxfoundation-dashboard.com/api/stats/token-holders-50',
-        'https://dydxfoundation-dashboard.com/api/stats/hedgie-holders',
-        'https://dydxfoundation-dashboard.com/api/stats/trading-volume',
-        'https://dydxfoundation-dashboard.com/api/stats/platform-volume',
-        'https://dydxfoundation-dashboard.com/api/stats/trading-fees',
-        'https://dydxfoundation-dashboard.com/api/tables/bottomoffunnel'
+        'https://dydxfoundation-dashboard.com/api/stats/discourse/views',
+        'https://dydxfoundation-dashboard.com/api/stats/discourse/views',
+        'https://dydxfoundation-dashboard.com/api/stats/discourse/members',
+        'https://dydxfoundation-dashboard.com/api/stats/discourse/contributors',
+        'https://dydxfoundation-dashboard.com/api/stats/discourse/posts',
+        'https://dydxfoundation-dashboard.com/api/stats/discourse/topics',
+        'https://dydxfoundation-dashboard.com/api/tables/middleoffunnel'
     ];
     
     try {
       const responses = await Promise.all(endpoints.map(endpoint => axios.get(endpoint, axiosConfig)));
   
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 6; i++) {
         const response = responses[i];
 
         if (response.status === 410) {
@@ -244,22 +208,25 @@ class Discourse extends Component {
           window.location.href = 'https://dydxfoundation-dashboard.com/'
         } else {
           const data = response.data ? response.data : false;
-          chartListClone[i].data = data.result.map(({ week_start_date, value, source }, i) => {
-            return { week_start_date, value, source };
+
+          chartListClone[i].data = data.result.map(({ week_start_date, value }, i) => {
+            return { week_start_date, value };
           });
+          console.log(chartListClone[i].data)
+
         }
       }
 
-      activeUserWidgetDataClone = responses[0].data.result;
-      tokenHolderWidgetDataClone = responses[3].data.result;
-      platformVolumeWidgetDataClone = responses[7].data.result;
-      dataTableClone = responses[9].data.result;
+      discourseViewsClone = responses[0].data.result;
+      discourseMemberWidgetDataClone = responses[2].data.result;
+      discourseContributorsWidgetDataClone = responses[3].data.result;
+      dataTableClone = responses[6].data.result;
 
       this.setState({
         chartList: chartListClone,
-        activeUserWidgetData: activeUserWidgetDataClone,
-        tokenHolderWidgetData: tokenHolderWidgetDataClone,
-        platformVolumeWidgetData: platformVolumeWidgetDataClone,
+        discourseViewsWidget: discourseViewsClone,
+        discourseMemberWidgetData: discourseMemberWidgetDataClone,
+        discourseContributorsWidgetData: discourseContributorsWidgetDataClone,
         dataTable: dataTableClone,
       });
     } catch (error) {
@@ -267,8 +234,6 @@ class Discourse extends Component {
     }
   }
   
-  
-
   render() {
     const {
       theme,
@@ -278,9 +243,9 @@ class Discourse extends Component {
       activeCurrency,
       chartList,
       activeCharts,
-      activeUserWidgetData,
-      tokenHolderWidgetData,
-      platformVolumeWidgetData,
+      discourseViewsWidget,
+      discourseMemberWidgetData,
+      discourseContributorsWidgetData,
       dataTable,
     } = this.state;
 
@@ -301,7 +266,7 @@ class Discourse extends Component {
               <Grid item xs={12}>
                 <PageHeader
                   theme={theme}
-                  pageTitle="Discourse Dashboard (STILL DEVELOPING THOSE ARE DUMMY DATA)"
+                  pageTitle="Discourse Dashboard (...DISCOURSE DONE... WAITING FOR SNAPSHOT API)"
                 />
               </Grid>
 
@@ -321,22 +286,22 @@ class Discourse extends Component {
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
                 <Widget1 
                   theme={theme}
-                  data={activeUserWidgetData}
-                  title="Active User of Quests" 
+                  data={discourseViewsWidget}
+                  title="Discourse Views" 
                 />
               </Grid>
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
                 <Widget1 
                   theme={theme}
-                  data={tokenHolderWidgetData}
-                  title="Token Holder Volume" 
+                  data={discourseMemberWidgetData}
+                  title="Discourse Member" 
                 />
               </Grid>
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
                 <Widget1 
                   theme={theme}
-                  data={platformVolumeWidgetData}
-                  title="Platform Volume" 
+                  data={discourseContributorsWidgetData}
+                  title="Discourse Contributors" 
                 />
               </Grid>
 
@@ -351,7 +316,7 @@ class Discourse extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={1460}
+                    tableHeight={318}
                     title= "Discourse Analitics Table"
                     dataTable={dataTable}
                   />

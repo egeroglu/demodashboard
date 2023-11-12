@@ -21,7 +21,7 @@ const menuItems = [
 		id		: 4,
 		title	: 'Google Analitics Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
-		link		: '/googleAnalitics'
+		link		: '/googleAnalytics'
 	},
 	{
 		id		: 5,

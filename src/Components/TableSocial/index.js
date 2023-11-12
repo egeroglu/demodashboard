@@ -8,93 +8,13 @@ import {
 	Paper,
 	Toolbar,
 	Typography,
-	Tooltip,
 	IconButton,
-	Divider,
 	ToggleButtonGroup,
-	Menu,
-	MenuItem
 } from "@mui/material"
 
 
 /* Icons */
-import SearchIcon from '@mui/icons-material/Search'
-import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-   
-const columns = [
-	{
-		field		: 'col1',
-		type			: 'string',
-		headerName	: '2022-01-01',
-		width		: 209,
-		description	: 'The identification used by the person with access to the online service.',
-	},
-	{
-		field		: 'col2',
-		headerAlign	: 'left',
-		align		: 'right',
-		type			: 'number',
-		headerName	: '2022-01-02',
-		width		: 203,
-	},
-	{
-		field		: 'col3',
-		headerAlign	: 'left',
-		align		: 'right',
-		type			: 'number',
-		headerName	: '2022-01-03 ',
-		width		: 209,
-	},
-	{
-		field		: 'col4',
-		headerAlign	: 'left',
-		align		: 'right',
-		type			: 'number',
-		headerName	: '2022-01-01',
-		width		: 216,
-	},
-	{
-		field		: 'col5',
-		headerAlign	: 'left',
-		align		: 'right',
-		type			: 'number',
-		headerName	: '2022-01-01',
-		width		: 186,
-	},
-	{
-		field		: 'col6',
-		headerAlign	: 'left',
-		align		: 'left',
-		type			: 'number',
-		headerName	: '2022-01-05',
-		width		: 175,
-	},
-	{
-		field		: 'col7',
-		headerAlign	: 'left',
-		align		: 'left',
-		type			: 'number',
-		headerName	: '2022-01-01',
-		width		: 175,
-	},
-	{
-		field		: 'col8',
-		headerAlign	: 'left',
-		align		: 'left',
-		type			: 'number',
-		headerName	: '2022-01-09',
-		width		: 169
-	},
-	{
-		field		: 'col9',
-		headerAlign	: 'left',
-		align		: 'left',
-		type			: 'string',
-		headerName	: '2022-01-10',
-		width		: 173
-	},
-]
 
 const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 	let columnArray = [];
@@ -109,7 +29,7 @@ const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 	const columnsNew = columnArray.slice(1).map((date, index) => ({
 	  field: `col${index + 1}`,
 	  headerName: date,
-	  width: 209,
+	  width: index === 0 ? 225 : 180,
 	  type: index === 0 ? 'string' : 'number',
 	  headerAlign: 'right',
 	  align: 'right'
@@ -149,36 +69,6 @@ const TableSocial = ({ theme, dataTable, title, tableHeight }) => {
 					<IconButton onClick={ handleOpenMobileMenu } className="mobile-iconbutton">
 						<MoreHorizIcon />
 					</IconButton>
-					<Menu
-						sx={{ mt: '45px' }}
-						open={ Boolean(mobileMenuAnchorEl) }
-						onClose={ handleCloseMobileMenu }
-						anchorEl={ mobileMenuAnchorEl }
-						anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-						transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-						keepMounted
-					>
-						<MenuItem onClick={ () => handleCloseMobileMenu('1d') }>1D</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('5d') }>5D</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('1m') }>1M</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('3m') }>3M</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('6m') }>6M</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('ytd') }>YTD</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('1y') }>1Y</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('5y') }>5Y</MenuItem>
-						<MenuItem onClick={ () => handleCloseMobileMenu('all') }>All</MenuItem>
-					</Menu>
-					<Divider />
-					<Tooltip title="Date range">
-						<IconButton>
-							<DateRangeOutlinedIcon />
-						</IconButton>
-					</Tooltip>
-					<Tooltip title="Search">
-						<IconButton onClick={ searchToggle }>
-							<SearchIcon />
-						</IconButton>
-					</Tooltip>
 				</ToolbarStyled>
 				<div style={{ width: '100%', height: tableHeight}}>
 					<DataGridStyled

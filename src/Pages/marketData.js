@@ -351,7 +351,7 @@ class MarketData extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={1460}
+                    tableHeight={1670}
                     title= "Market Data Table"
                     dataTable={dataTable}
                   />
