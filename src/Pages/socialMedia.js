@@ -63,30 +63,11 @@ class SocialMedia extends Component {
         "chart-5",
         "chart-6",
         "chart-7",
-        "chart-8",
-        "chart-9"
+        "chart-8"
       ],
       chartList: [
         {
           id: "chart-1",
-          data: [],
-          component: YoutubeViewChart,
-          props: {},
-          title: "Youtube View Data",
-          description:
-            "View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate:"",
-        },{
-          id: "chart-2",
-          data: [],
-          component: YoutubeSubsChart,
-          props: {},
-          title: "Youtube Subscriber Data",
-          description:
-            "Subscriber Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate:"",
-        },{
-          id: "chart-3",
           data: [],
           component: WebsiteViewChart,
           props: {},
@@ -94,8 +75,9 @@ class SocialMedia extends Component {
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate:"",
-        },{
-          id: "chart-4",
+        },
+        {
+          id: "chart-2",
           data: [],
           component: WebsiteViewCountryChart,
           props: {},
@@ -104,7 +86,7 @@ class SocialMedia extends Component {
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate:"",
         },{
-          id: "chart-5",
+          id: "chart-3",
           data: [],
           component: ChartLineAndBar,
           props: {},
@@ -113,7 +95,7 @@ class SocialMedia extends Component {
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate:"",
         },{
-          id: "chart-6",
+          id: "chart-4",
           data: [],
           component: WebsiteViewCountryChart,
           props: {},
@@ -121,26 +103,27 @@ class SocialMedia extends Component {
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate:"",
+        },
+        {
+          id: "chart-5",
+          data: [],
+          component: YoutubeViewChart,
+          props: {},
+          title: "Youtube View Data",
+          description:
+            "View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate:"",
+        },{
+          id: "chart-6",
+          data: [],
+          component: YoutubeSubsChart,
+          props: {},
+          title: "Youtube Subscriber Data",
+          description:
+            "Subscriber Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate:"",
         },{
           id: "chart-7",
-          data: [],
-          component: WebsiteViewChart,
-          props: {},
-          title: "Telegram View Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate:"",
-        },{
-          id: "chart-8",
-          data: [],
-          component: WebsiteViewCountryChart,
-          props: {},
-          title: "Telegram Follower Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate:"",
-        },{
-          id: "chart-9",
           data: [],
           component: WebsiteViewChart,
           props: {},
@@ -148,7 +131,16 @@ class SocialMedia extends Component {
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate:"",
-        }
+        },{
+          id: "chart-8",
+          data: [],
+          component: ChartLineAndBar,
+          props: {},
+          title: "Linkedin user Data",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
+        }, 
       ],
     watchListIsOpen: false,
   };
@@ -218,12 +210,12 @@ class SocialMedia extends Component {
       }
     };
     const endpoints = [
-        'https://dydxfoundation-dashboard.com/api/stats/youtube',
-        'https://dydxfoundation-dashboard.com/api/stats/website',
-        'https://dydxfoundation-dashboard.com/api/stats/twitter',
-        'https://dydxfoundation-dashboard.com/api/stats/telegram',
-        'https://dydxfoundation-dashboard.com/api/stats/discord',
-        'https://dydxfoundation-dashboard.com/api/tables/topoffunnel',
+      'https://dydxfoundation-dashboard.com/api/stats/website',
+      'https://dydxfoundation-dashboard.com/api/stats/twitter',
+      'https://dydxfoundation-dashboard.com/api/stats/youtube',
+      'https://dydxfoundation-dashboard.com/api/stats/discord',
+      'https://dydxfoundation-dashboard.com/api/stats/linkedin',
+      'https://dydxfoundation-dashboard.com/api/tables/topoffunnel',
     ];
     
     try {
@@ -238,16 +230,12 @@ class SocialMedia extends Component {
         } else {
           const data = response.data ? response.data : false;
           if (i === 0) {
-            chartListClone[0].data = data.result
-              .filter(item => item.type === 'VIEWS')
-              .map(({ week_start_date, value, type, source }, index) => {
-                return { week_start_date, value, type, source };
-              });
-            chartListClone[1].data = data.result
-              .filter(item => item.type === 'SUBS')
-              .map(({ week_start_date, value, type, source }, index) => {
-                return { week_start_date, value, type, source };
-              });
+            chartListClone[0].data = data.result.map(({ week_start_date, value, source }, index) => {
+              return { week_start_date, value, source };
+            });
+            chartListClone[1].data = data.result.map(({ week_start_date, value, source }, index) => {
+              return { week_start_date, value, source };
+            });
           } else if (i === 1) {
             chartListClone[2].data = data.result.map(({ week_start_date, value, source }, index) => {
               return { week_start_date, value, source };
@@ -256,21 +244,22 @@ class SocialMedia extends Component {
               return { week_start_date, value, source };
             });
           } else if (i === 2) {
-            chartListClone[4].data = data.result.map(({ week_start_date, value, source }, index) => {
-              return { week_start_date, value, source };
-            });
-            chartListClone[5].data = data.result.map(({ week_start_date, value, source }, index) => {
-              return { week_start_date, value, source };
-            });
+            chartListClone[4].data = data.result
+              .filter(item => item.type === 'VIEWS')
+              .map(({ week_start_date, value, type, source }, index) => {
+                return { week_start_date, value, type, source };
+              });
+            chartListClone[5].data = data.result
+              .filter(item => item.type === 'SUBS')
+              .map(({ week_start_date, value, type, source }, index) => {
+                return { week_start_date, value, type, source };
+              });
           } else if (i === 3) {
             chartListClone[6].data = data.result.map(({ week_start_date, value, source }, index) => {
               return { week_start_date, value, source };
             });
-            chartListClone[7].data = data.result.map(({ week_start_date, value, source }, index) => {
-              return { week_start_date, value, source };
-            });
           } else if (i === 4) {
-            chartListClone[8].data = data.result.map(({ week_start_date, value, source }, index) => {
+            chartListClone[7].data = data.result.map(({ week_start_date, value, source }, index) => {
               return { week_start_date, value, source };
             });
           }
@@ -278,7 +267,7 @@ class SocialMedia extends Component {
       }
 
       websiteViewWidgetDataClone = responses[0].data.result;
-      totalSubsWidgetDataClone = responses[3].data.result;
+      totalSubsWidgetDataClone = responses[1].data.result;
       dataTableClone = responses[5].data.result;
 
       this.setState({
@@ -351,7 +340,7 @@ class SocialMedia extends Component {
                 <Widget1 
                   theme={theme}
                   data={totalSubsWidgetData}
-                  title="Total Subs" 
+                  title="Twitter Views" 
                 />
               </Grid>
 

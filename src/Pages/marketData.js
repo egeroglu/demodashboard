@@ -65,66 +65,11 @@ class MarketData extends Component {
         "chart-5",
         "chart-6",
         "chart-7",
-        "chart-8",
-        "chart-9"
+        "chart-8"
       ],
       chartList: [
         {
           id: "chart-1",
-          data: [],
-          component: WebsiteViewChart,
-          props: {},
-          title: "Active user Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-2",
-          data: [],
-          component: ActiveUserCountryChart,
-          props: {},
-          title: "Active user Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-3",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Linkedin user Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-4",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Token holders",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-5",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Token holders > 50dYdX",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-6",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Hedgie holders",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-7",
           data: [],
           component: YoutubeViewChart,
           props: {},
@@ -133,7 +78,7 @@ class MarketData extends Component {
             "View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
         }, {
-          id: "chart-8",
+          id: "chart-2",
           data: [],
           component: WebsiteViewCountryChart,
           props: {},
@@ -142,7 +87,7 @@ class MarketData extends Component {
             "Subscriber Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
         }, {
-          id: "chart-9",
+          id: "chart-3",
           data: [],
           component: WebsiteViewCountryChart,
           props: {},
@@ -150,7 +95,43 @@ class MarketData extends Component {
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
-        },
+        }, {
+          id: "chart-4",
+          data: [],
+          component: WebsiteViewChart,
+          props: {},
+          title: "Active user Data",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
+        }, {
+          id: "chart-5",
+          data: [],
+          component: ActiveUserCountryChart,
+          props: {},
+          title: "Active user Data",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
+        }, {
+          id: "chart-6",
+          data: [],
+          component: ChartLineAndBar,
+          props: {},
+          title: "Token holders",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
+        }, {
+          id: "chart-7",
+          data: [],
+          component: ChartLineAndBar,
+          props: {},
+          title: "Hedgie holders",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
+        }, 
       ],
     watchListIsOpen: false,
   };
@@ -221,22 +202,20 @@ class MarketData extends Component {
       }
     };
     const endpoints = [
-        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
-        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
-        'https://dydxfoundation-dashboard.com/api/stats/linkedin',
-        'https://dydxfoundation-dashboard.com/api/stats/token-holders',
-        'https://dydxfoundation-dashboard.com/api/stats/token-holders-50',
-        'https://dydxfoundation-dashboard.com/api/stats/hedgie-holders',
         'https://dydxfoundation-dashboard.com/api/stats/trading-volume',
         'https://dydxfoundation-dashboard.com/api/stats/platform-volume',
         'https://dydxfoundation-dashboard.com/api/stats/trading-fees',
+        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
+        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
+        'https://dydxfoundation-dashboard.com/api/stats/token-holders',
+        'https://dydxfoundation-dashboard.com/api/stats/hedgie-holders',
         'https://dydxfoundation-dashboard.com/api/tables/bottomoffunnel'
     ];
     
     try {
       const responses = await Promise.all(endpoints.map(endpoint => axios.get(endpoint, axiosConfig)));
   
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 7; i++) {
         const response = responses[i];
 
         if (response.status === 410) {
@@ -250,10 +229,10 @@ class MarketData extends Component {
         }
       }
 
-      activeUserWidgetDataClone = responses[0].data.result;
-      tokenHolderWidgetDataClone = responses[3].data.result;
-      platformVolumeWidgetDataClone = responses[7].data.result;
-      dataTableClone = responses[9].data.result;
+      activeUserWidgetDataClone = responses[3].data.result;
+      tokenHolderWidgetDataClone = responses[5].data.result;
+      platformVolumeWidgetDataClone = responses[1].data.result;
+      dataTableClone = responses[7].data.result;
 
       this.setState({
         chartList: chartListClone,
@@ -322,14 +301,14 @@ class MarketData extends Component {
                 <Widget1 
                   theme={theme}
                   data={activeUserWidgetData}
-                  title="Active User of Quests" 
+                  title="Active Users" 
                 />
               </Grid>
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
                 <Widget1 
                   theme={theme}
                   data={tokenHolderWidgetData}
-                  title="Token Holder Volume" 
+                  title="Token Holder" 
                 />
               </Grid>
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>

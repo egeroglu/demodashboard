@@ -212,8 +212,6 @@ class Discourse extends Component {
           chartListClone[i].data = data.result.map(({ week_start_date, value }, i) => {
             return { week_start_date, value };
           });
-          console.log(chartListClone[i].data)
-
         }
       }
 
@@ -316,7 +314,7 @@ class Discourse extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={318}
+                    tableHeight={368}
                     title= "Discourse Analitics Table"
                     dataTable={dataTable}
                   />

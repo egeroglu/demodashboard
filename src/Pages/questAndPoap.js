@@ -259,7 +259,7 @@ class QuestAndPoap extends Component {
               <Grid item xs={12}>
                 <PageHeader
                   theme={theme}
-                  pageTitle="Quest & POAP's Dashboard (WAITING FOR QUEST and POAP API FOR ...NEW DATA...)"
+                  pageTitle="Quest & POAP's Dashboard"
                 />
               </Grid>
 

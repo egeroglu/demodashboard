@@ -22,12 +22,12 @@ const Widget1 = ({title, data}) => {
 	return (
 		<Card
 			sx={{
-				height: 140,
+				height: 165,
 				position: 'relative'
 			}}
 		>
 			<CardHeader
-				title={title}
+				title={<Typography variant="h6" sx={{ textAlign: 'center' }}>{title}</Typography>}
 				sx={{
 					padding: '11px 18px'
 				}}
@@ -36,7 +36,7 @@ const Widget1 = ({title, data}) => {
 			<Stack direction="row" alignItems="center" justifyContent="space-evenly" sx={{ mt: '16px' }}>
 				<Box sx={{ textAlign: 'center' }}>
                     <Stack direction="row" alignItems="center" justifyContent="center">
-						<Typography sx={{ fontSize: '14px' }}>Weekly Change</Typography>
+						<Typography sx={{ fontSize: '18px' }}>Weekly Change</Typography>
 					</Stack>
                         {change >= 0 ? (
                             <Stack direction="row" alignItems="center" justifyContent="center" sx={{ color: '#02C076' }}>
@@ -52,9 +52,9 @@ const Widget1 = ({title, data}) => {
 				</Box>
 				<Box>
                     <Stack direction="row" alignItems="center" justifyContent="center">
-						<Typography sx={{ fontSize: '14px' }}>Total Number</Typography>
+						<Typography sx={{ fontSize: '18px' }}>Total Number</Typography>
 					</Stack>
-					<Typography sx={{ fontSize: '24px', fontWeight: 700, mb: '12px',marginTop: '10px' }}>
+					<Typography sx={{ fontSize: '24px', fontWeight: 700, mb: '12px',marginTop: '10px',textAlign: 'center' }}>
 						{total}
 					</Typography>
 				</Box>
