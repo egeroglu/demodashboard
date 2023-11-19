@@ -4,13 +4,14 @@ import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official'
 import highchartsExporting from "highcharts/modules/exporting";
 import highchartsExportData from "highcharts/modules/export-data";
+
 /* UI */
 import {
 	styled,
 	Card,
 	Collapse,
 	CardContent,
-} from "@mui/material"
+} from "@mui/material";
 
 /* Components */
 import ChartCardHeader from "../ChartCardHeader"
