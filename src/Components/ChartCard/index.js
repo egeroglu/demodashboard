@@ -3,7 +3,7 @@ import Highcharts from 'highcharts/highstock';
 
 import HighchartsReact from 'highcharts-react-official'
 import highchartsExporting from "highcharts/modules/exporting";
-
+import highchartsExportData from "highcharts/modules/export-data";
 /* UI */
 import {
 	styled,
@@ -17,6 +17,7 @@ import ChartCardHeader from "../ChartCardHeader"
 import ChartCardFooter from '../ChartCardFooter'
 
 highchartsExporting(Highcharts)
+highchartsExportData(Highcharts)
 
 const ChartCard = ({ theme, title, description,lastUpdate, dragHandle, options, children }) => {
 	const chartComponent = useRef(null);
@@ -38,7 +39,7 @@ const ChartCard = ({ theme, title, description,lastUpdate, dragHandle, options, 
 			<Collapse in={ expanded } timeout="auto" unmountOnExit>
 				<CardContentStyled
 					sx={{
-						backgroundColor: theme === 'light' ? '#FFFFFF' : '#05052F'
+						backgroundColor: theme === 'light' ? '#04042E' : '#04042E'
 					}}
 				>
 					<HighchartsReact
