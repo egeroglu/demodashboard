@@ -29,6 +29,12 @@ const menuItems = [
 		color	: 'rgba(61, 61, 87, 0.3)',
 		link		: '/questAndPoap'
 	},
+	{
+		id		: 6,
+		title	: 'Weekly Summary',
+		color	: 'rgba(61, 61, 87, 0.3)',
+		link		: '/summary'
+	},
 	/*
 	{
 		parent_id	: 1,

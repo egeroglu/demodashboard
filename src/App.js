@@ -7,6 +7,7 @@ import MarketData from "./Pages/marketData";
 import SocialMedia from "./Pages/socialMedia";
 import GoogleAnalytics from "./Pages/googleAnalytics";
 import Discourse from "./Pages/discourse";
+import Summary from "./Pages/summary";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/discourse" element={<Discourse />} />
             <Route path="/questAndPoap" element={<QuestAndPoap />} />
             <Route path="/googleAnalytics" element={<GoogleAnalytics />} />
+            <Route path="/summary" element={<Summary />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
       </div>
