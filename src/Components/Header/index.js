@@ -159,6 +159,7 @@ const Header = ({ theme }) => {
 }
 
 const AppBarStyled	= styled(AppBar)(({ theme }) => ({
+	background: "#1A1A2C",
 	borderBottom: '1px solid #3D3D57',
 	boxShadow: localStorage.getItem('theme') === 'light' ? '0px 1px 8px rgba(56, 82, 149, 0.14)' : 'none',
 	'& .MuiIconButton-root': {

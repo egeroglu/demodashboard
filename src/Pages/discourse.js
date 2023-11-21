@@ -23,7 +23,9 @@ import WebsiteViewChart from "../Components/BottomCharts/WebsiteViewChart";
 import ChartLineAndBar from "../Components/ChartLineAndBar";
 import Widget1 from "../Components/Widget1";
 import TableSocial from "../Components/TableSocial";
+import BasicDatePicker from "../Components/DatePicker";
 
+import dayjs from 'dayjs';
 
 class Discourse extends Component {
   state = {
@@ -50,6 +52,8 @@ class Discourse extends Component {
     changePercentage: "",
     allTimeLow: "",
     lastTime: "",
+    fromDate: "",
+    toDate: "",
     discourseViewsWidget:"",
     discourseMemberWidgetData:"",
     discourseContributorsWidgetData:"",
@@ -127,6 +131,13 @@ class Discourse extends Component {
       ...prevState,
       sidebarIsOpen: !prevState.sidebarIsOpen,
     }));
+
+    handleDateChange = (newFromDate, newToDate) => {
+      this.setState({
+        fromDate: newFromDate,
+        toDate: newToDate,
+      });
+    };
 
   watchListToggle = () =>
     this.setState((prevState) => ({
@@ -245,6 +256,8 @@ class Discourse extends Component {
       discourseMemberWidgetData,
       discourseContributorsWidgetData,
       dataTable,
+      fromDate,
+      toDate
     } = this.state;
 
     return (
@@ -281,6 +294,15 @@ class Discourse extends Component {
                   setActiveCurrency={this.setActiveCurrency}
                 />
               </Grid>
+
+              <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                <BasicDatePicker 
+                  fromDate={fromDate} 
+                  toDate={toDate} 
+                  onDateChange={this.handleDateChange}
+                />
+              </Grid>
+              
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
                 <Widget1 
                   theme={theme}

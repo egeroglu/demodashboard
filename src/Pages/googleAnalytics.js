@@ -19,11 +19,7 @@ import SectionHeader from "../Components/SectionHeader";
 
 /* Charts */
 import Charts from "../Components/Charts";
-import WebsiteViewChart from "../Components/BottomCharts/WebsiteViewChart";
-import WebsiteViewCountryChart from "../Components/BottomCharts/WebsiteViewCountryChart";
-import ChartLineAndBar from "../Components/ChartLineAndBar";
-import YoutubeViewChart from "../Components/BottomCharts/YoutubeViewChart";
-import ActiveUserCountryChart from "../Components/BottomCharts/ActiveUserCountryChart";
+import DemograpyChart from "../Components/BottomCharts/DemograpyChart";
 import Widget1 from "../Components/Widget1";
 import TableSocial from "../Components/TableSocial";
 
@@ -59,98 +55,18 @@ class GoogleAnalytics extends Component {
     dataTable:"",
     activeCharts: [
         "chart-1",
-        "chart-2",
-        "chart-3",
-        "chart-4",
-        "chart-5",
-        "chart-6",
-        "chart-7",
-        "chart-8",
-        "chart-9"
       ],
       chartList: [
         {
           id: "chart-1",
           data: [],
-          component: WebsiteViewChart,
+          component: DemograpyChart,
           props: {},
-          title: "Data",
+          title: "demographic Charts",
           description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
+            "Based on countries.",
           lastUpdate: "",
-        }, {
-          id: "chart-2",
-          data: [],
-          component: ActiveUserCountryChart,
-          props: {},
-          title: "Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-3",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-4",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-5",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-6",
-          data: [],
-          component: ChartLineAndBar,
-          props: {},
-          title: "Data",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-7",
-          data: [],
-          component: YoutubeViewChart,
-          props: {},
-          title: "Chart",
-          description:
-            "View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-8",
-          data: [],
-          component: WebsiteViewCountryChart,
-          props: {},
-          title: "Chart",
-          description:
-            "Subscriber Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        }, {
-          id: "chart-9",
-          data: [],
-          component: WebsiteViewCountryChart,
-          props: {},
-          title: "Chart",
-          description:
-            "Website View Count chart illustrates the number of poaps given to comunity.",
-          lastUpdate: "",
-        },
+        }, 
       ],
     watchListIsOpen: false,
   };
@@ -221,22 +137,13 @@ class GoogleAnalytics extends Component {
       }
     };
     const endpoints = [
-        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
-        'https://dydxfoundation-dashboard.com/api/stats/activeuser',
-        'https://dydxfoundation-dashboard.com/api/stats/linkedin',
-        'https://dydxfoundation-dashboard.com/api/stats/token-holders',
-        'https://dydxfoundation-dashboard.com/api/stats/token-holders-50',
-        'https://dydxfoundation-dashboard.com/api/stats/hedgie-holders',
-        'https://dydxfoundation-dashboard.com/api/stats/trading-volume',
-        'https://dydxfoundation-dashboard.com/api/stats/platform-volume',
-        'https://dydxfoundation-dashboard.com/api/stats/trading-fees',
-        'https://dydxfoundation-dashboard.com/api/tables/bottomoffunnel'
+        'https://dydxfoundation-dashboard.com/api/stats/google/demographic',
     ];
     
     try {
       const responses = await Promise.all(endpoints.map(endpoint => axios.get(endpoint, axiosConfig)));
   
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 1; i++) {
         const response = responses[i];
 
         if (response.status === 410) {
@@ -249,11 +156,6 @@ class GoogleAnalytics extends Component {
           });
         }
       }
-
-      activeUserWidgetDataClone = responses[0].data.result;
-      tokenHolderWidgetDataClone = responses[3].data.result;
-      platformVolumeWidgetDataClone = responses[7].data.result;
-      dataTableClone = responses[9].data.result;
 
       this.setState({
         chartList: chartListClone,

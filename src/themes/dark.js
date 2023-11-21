@@ -3,7 +3,7 @@ import typography from './typography'
 
 export const darkTheme = createTheme({
 	palette	: {
-		mode			: 'light',
+		mode			: 'dark',
 		primary		: {
 			main			: '#1A1A2C',
 			contrastText	: '#FFFFFF'
