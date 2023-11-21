@@ -201,7 +201,7 @@ class GoogleAnalytics extends Component {
               <Grid item xs={12}>
                 <PageHeader
                   theme={theme}
-                  pageTitle="Google Analytics Dashboard (...DUMMY DATA... WAITING FOR API)"
+                  pageTitle="GA & SEO Dashboard "
                 />
               </Grid>
 
