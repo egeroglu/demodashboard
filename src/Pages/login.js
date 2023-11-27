@@ -42,7 +42,7 @@ class Login extends Component {
         if (response.status === 200) {
           let result = await response.json();
           Cookies.set('token', result.result.token)
-          window.location.href = 'http://localhost:3000/marketData'
+          window.location.href = 'https://dydxfoundation-dashboard.com/marketData'
         } else {
           alert('Wrong Credentials')
         }
