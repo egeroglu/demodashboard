@@ -124,7 +124,7 @@ class Discourse extends Component {
           data: [],
           component: ChartLineAndBar,
           props: {},
-          title: "Discourse Posts",
+          title: "Mintscan Proposals",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
@@ -133,7 +133,7 @@ class Discourse extends Component {
           data: [],
           component: ChartLineAndBar,
           props: {},
-          title: "Discourse Topics",
+          title: "Mintscan Validators",
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
