@@ -23,9 +23,6 @@ import WebsiteViewChart from "../Components/BottomCharts/WebsiteViewChart";
 import ChartLineAndBar from "../Components/ChartLineAndBar";
 import Widget1 from "../Components/Widget1";
 import TableSocial from "../Components/TableSocial";
-import BasicDatePicker from "../Components/DatePicker";
-
-import dayjs from 'dayjs';
 
 class Discourse extends Component {
   state = {
@@ -46,14 +43,13 @@ class Discourse extends Component {
         title: "Delta",
       },
     ],
+
     activeCurrency: "ETH",
     websiteData: {},
     price: "",
     changePercentage: "",
     allTimeLow: "",
     lastTime: "",
-    fromDate: "",
-    toDate: "",
     discourseViewsWidget:"",
     discourseMemberWidgetData:"",
     discourseContributorsWidgetData:"",
@@ -65,6 +61,8 @@ class Discourse extends Component {
         "chart-4",
         "chart-5",
         "chart-6",
+        "chart-7",
+        "chart-8",
       ],
       chartList: [
         {
@@ -121,6 +119,24 @@ class Discourse extends Component {
           description:
             "Website View Count chart illustrates the number of poaps given to comunity.",
           lastUpdate: "",
+        }, {
+          id: "chart-7",
+          data: [],
+          component: ChartLineAndBar,
+          props: {},
+          title: "Discourse Posts",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
+        }, {
+          id: "chart-8",
+          data: [],
+          component: ChartLineAndBar,
+          props: {},
+          title: "Discourse Topics",
+          description:
+            "Website View Count chart illustrates the number of poaps given to comunity.",
+          lastUpdate: "",
         }
       ],
     watchListIsOpen: false,
@@ -137,6 +153,7 @@ class Discourse extends Component {
         fromDate: newFromDate,
         toDate: newToDate,
       });
+      console.log(toDate)
     };
 
   watchListToggle = () =>
@@ -205,13 +222,15 @@ class Discourse extends Component {
         'https://dydxfoundation-dashboard.com/api/stats/discourse/contributors',
         'https://dydxfoundation-dashboard.com/api/stats/discourse/posts',
         'https://dydxfoundation-dashboard.com/api/stats/discourse/topics',
+        'https://dydxfoundation-dashboard.com/api/stats/mintscan/proposals',
+        'https://dydxfoundation-dashboard.com/api/stats/mintscan/validators',
         'https://dydxfoundation-dashboard.com/api/tables/middleoffunnel'
     ];
     
     try {
       const responses = await Promise.all(endpoints.map(endpoint => axios.get(endpoint, axiosConfig)));
   
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 8; i++) {
         const response = responses[i];
 
         if (response.status === 410) {
@@ -229,7 +248,7 @@ class Discourse extends Component {
       discourseViewsClone = responses[0].data.result;
       discourseMemberWidgetDataClone = responses[2].data.result;
       discourseContributorsWidgetDataClone = responses[3].data.result;
-      dataTableClone = responses[6].data.result;
+      dataTableClone = responses[8].data.result;
 
       this.setState({
         chartList: chartListClone,
@@ -277,7 +296,7 @@ class Discourse extends Component {
               <Grid item xs={12}>
                 <PageHeader
                   theme={theme}
-                  pageTitle="Discourse Dashboard (...DISCOURSE DONE... WAITING FOR SNAPSHOT API)"
+                  pageTitle="Discourse & Mintscan Dashboard"
                 />
               </Grid>
 
@@ -295,14 +314,6 @@ class Discourse extends Component {
                 />
               </Grid>
 
-              <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <BasicDatePicker 
-                  fromDate={fromDate} 
-                  toDate={toDate} 
-                  onDateChange={this.handleDateChange}
-                />
-              </Grid>
-              
               <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
                 <Widget1 
                   theme={theme}
@@ -336,7 +347,7 @@ class Discourse extends Component {
               <Grid item xs={12}>
                   <TableSocial 
                     theme={theme}
-                    tableHeight={368}
+                    tableHeight={473}
                     title= "Discourse Analitics Table"
                     dataTable={dataTable}
                   />

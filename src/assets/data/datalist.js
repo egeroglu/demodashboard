@@ -19,7 +19,7 @@ const menuItems = [
 	},
 	{
 		id		: 4,
-		title	: 'Google Analitics Dashboard',
+		title	: 'Ga & Seo Dashboard',
 		color	: 'rgba(61, 61, 87, 0.3)',
 		link		: '/googleAnalytics'
 	},

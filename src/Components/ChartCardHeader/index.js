@@ -6,9 +6,6 @@ import {
 	IconButton
 } from "@mui/material"
 
-/* Icons */
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-
 const ChartCardHeader = ({ theme, title, description, expanded, setExpanded }) => {
 	const IconButtonStyle = {
 		'& .MuiSvgIcon-root': {
@@ -24,15 +21,6 @@ const ChartCardHeader = ({ theme, title, description, expanded, setExpanded }) =
 	return (
 		<CardHeaderStyled
 			title={ title }
-			action={
-				<>
-					<Tooltip title={ description }>
-						<IconButton sx={ IconButtonStyle }>
-							<HelpOutlineIcon />
-						</IconButton>
-					</Tooltip>
-				</>
-			}
 		/>
 	)
 }

@@ -125,7 +125,7 @@ class SocialMedia extends Component {
         },{
           id: "chart-7",
           data: [],
-          component: WebsiteViewChart,
+          component: ChartLineAndBar,
           props: {},
           title: "DC View Data",
           description:
