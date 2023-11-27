@@ -54,6 +54,8 @@ class Summary extends Component {
     discourseContributorsWidgetData:"",
     questWidgetData:"",
     poapWidgetData:"",
+    performanceWidgetData:"",
+    impressionWidgetData:"",
     dataTable:"",
     activeCharts: [ ],
     chartList: [ ],
@@ -123,6 +125,8 @@ class Summary extends Component {
     let discourseContributorsWidgetDataClone = this.state.discourseContributorsWidgetData;
     let questWidgetDataClone = this.state.questWidgetData;
     let poapWidgetDataClone = this.state.poapWidgetData;
+    let performanceWidgetDataClone = this.state.performanceWidgetData;
+    let impressionWidgetDataClone = this.state.impressionWidgetData;
     const axiosConfig = {
       headers: {
         "Authorization": "Bearer " + jwtToken
@@ -139,7 +143,8 @@ class Summary extends Component {
         'https://dydxfoundation-dashboard.com/api/stats/discourse/contributors',
         'https://dydxfoundation-dashboard.com/api/stats/claimed-quests',
         'https://dydxfoundation-dashboard.com/api/stats/total-poaps',
-
+        'https://dydxfoundation-dashboard.com/api/stats/google/performance',
+        'https://dydxfoundation-dashboard.com/api/stats/google/impressions',
     ];
     
     try {
@@ -154,7 +159,8 @@ class Summary extends Component {
       discourseContributorsWidgetDataClone = responses[7].data.result;
       questWidgetDataClone = responses[8].data.result;
       poapWidgetDataClone = responses[9].data.result;
-
+      performanceWidgetDataClone = responses[10].data.result;
+      impressionWidgetDataClone = responses[11].data.result;
       this.setState({
         activeUserWidgetData: activeUserWidgetDataClone,
         tokenHolderWidgetData: tokenHolderWidgetDataClone,
@@ -166,6 +172,8 @@ class Summary extends Component {
         discourseContributorsWidgetData: discourseContributorsWidgetDataClone,
         questWidgetData: questWidgetDataClone,
         poapWidgetData: poapWidgetDataClone,
+        performanceWidgetData: performanceWidgetDataClone,
+        impressionWidgetData: impressionWidgetDataClone,
       });
 
     } catch (error) {
@@ -192,6 +200,8 @@ class Summary extends Component {
       discourseContributorsWidgetData,
       questWidgetData,
       poapWidgetData,
+      performanceWidgetData,
+      impressionWidgetData,
     } = this.state;
 
     return (
@@ -296,6 +306,20 @@ class Summary extends Component {
                   theme={theme}
                   data={poapWidgetData}
                   title="Number of POAP's" 
+                />
+              </Grid>
+              <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
+                <Widget1 
+                  theme={theme}
+                  data={performanceWidgetData}
+                  title="Performance" 
+                />
+              </Grid>
+              <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
+                <Widget1 
+                  theme={theme}
+                  data={impressionWidgetData}
+                  title="Impressions" 
                 />
               </Grid>
 
